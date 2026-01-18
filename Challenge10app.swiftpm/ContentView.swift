@@ -4,8 +4,8 @@ import AVFoundation
 
 struct ContentView: View {
     
-    let whiteNoteName = ["do", "re", "mi", "fa", "sol", "la", "si", "doHigh"] 
-    let blackNoteName = ["doSharp", "reSharp", "miSharp", "faSharp", "solSharp", "laSharp", "siSharp"]
+    let whiteNoteName = ["laReallyLow", "siReallyLow", "doLow", "reLow", "miLow", "faLow", "solLow", "laLow", "siLow", "do", "re", "mi", "fa", "sol", "la", "si", "doHigh", "reHigh", "miHigh" ] 
+    //    let blackNoteName = ["doSharp", "reSharp", "miSharp", "faSharp", "solSharp", "laSharp", "siSharp"]
     
     @State var player: AVAudioPlayer?
     
