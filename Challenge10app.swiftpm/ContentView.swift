@@ -1,8 +1,21 @@
 import SwiftUI
 import AVFoundation
+//
+//struct pressedNote {
+//    var nameOfNote: String
+//    var numberOfNote: Int
+//}
+//var answerChord: [pressedNote] = 
+//    [
+//        pressedNote(
+//            nameOfNote = noteName,
+//            numberOFNote: 
+//        )
+//    ]
 
 
 struct ContentView: View {
+    @State var isClicked = false 
     
     let whiteNoteName = ["laReallyLow", "siReallyLow", "doLow", "reLow", "miLow", "faLow", "solLow", "laLow", "siLow", "do", "re", "mi", "fa", "sol", "la", "si", "doHigh", "reHigh", "miHigh" ] 
     //    let blackNoteName = ["doSharp", "reSharp", "miSharp", "faSharp", "solSharp", "laSharp", "siSharp"]
@@ -24,6 +37,7 @@ struct ContentView: View {
     }
     
     var body: some View {
+        
         ZStack{
             HStack(spacing: -7) {
                 ForEach(whiteNoteName, id: \.self) {note in
@@ -36,6 +50,9 @@ struct ContentView: View {
                     }
                 }
             }
+            .simultaneousGesture(LongPressGesture(minimumDuration: 0.1).onEnded({ _ in 
+                self.isClicked = true
+            }))
             //            HStack(spacing: -7) {
             //                ForEach(blackNoteName, id: \.self) {sharpNote in
             //                    Button(action: {
