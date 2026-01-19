@@ -37,34 +37,36 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
-        ZStack{
-            HStack(spacing: -7) {
-                ForEach(whiteNoteName, id: \.self) {note in
-                    Button(action: {
-                        playSound(noteName: note)
-                    }) {
-                        Image("whiteKey")
-                            .resizable()
-                            .frame(width:50, height:250)
+        VStack{
+            Spacer ()
+            ZStack{
+                HStack(spacing: -7) {
+                    ForEach(whiteNoteName, id: \.self) {note in
+                        Button(action: {
+                            playSound(noteName: note)
+                        }) {
+                            Image("whiteKey")
+                                .resizable()
+                                .frame(width:50, height:250)
+                        }
                     }
                 }
+                .simultaneousGesture(LongPressGesture(minimumDuration: 0.1).onEnded({ _ in 
+                    self.isClicked = true
+                }))
+                //            HStack(spacing: -7) {
+                //                ForEach(blackNoteName, id: \.self) {sharpNote in
+                //                    Button(action: {
+                //                        playSound(blackNoteName: sharpNote)
+                //                    }) {
+                //                        Image("blackKey")
+                //                            .resizable()
+                //                            .frame(width:50, height:250)
+                //                    }
+                //                }
+                //            }
+                
             }
-            .simultaneousGesture(LongPressGesture(minimumDuration: 0.1).onEnded({ _ in 
-                self.isClicked = true
-            }))
-            //            HStack(spacing: -7) {
-            //                ForEach(blackNoteName, id: \.self) {sharpNote in
-            //                    Button(action: {
-            //                        playSound(blackNoteName: sharpNote)
-            //                    }) {
-            //                        Image("blackKey")
-            //                            .resizable()
-            //                            .frame(width:50, height:250)
-            //                    }
-            //                }
-            //            }
-            
         }
     }
 }
