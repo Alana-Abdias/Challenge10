@@ -18,7 +18,7 @@ struct blackKey: View {
     }
 }
 
-struct PianoKeys: View {
+struct ExerciseView: View {
     
     let whiteNoteG0 = ["laReallyLow", "siReallyLow"] 
     
@@ -53,9 +53,9 @@ struct PianoKeys: View {
     
     var body: some View {
         VStack{
-            Spacer ()
+            Spacer()
             HStack (spacing: -10) {
-                
+                Spacer()
                 ZStack(alignment: .top){
                     HStack (spacing: -10) {
                         ForEach(whiteNoteG0, id: \.self) {note in
@@ -167,11 +167,13 @@ struct PianoKeys: View {
                             }
                         }
                     }
-                    .ignoresSafeArea()           
                 }
-                }
+                Spacer()
             }
         }
+        .background(Color.gray)
+        
     }
+}
 
-                
+
