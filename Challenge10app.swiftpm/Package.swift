@@ -8,17 +8,17 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Challenge10",
+    name: "ChordPlay",
     platforms: [
         .iOS("18.1")
     ],
     products: [
         .iOSApplication(
-            name: "Challenge10",
+            name: "ChordPlay",
             targets: ["AppModule"],
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .note),
+            appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.indigo),
             supportedDeviceFamilies: [
                 .pad,

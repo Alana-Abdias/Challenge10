@@ -17,8 +17,8 @@ import AVFoundation
 struct ContentView: View {
     @State var isClicked = false 
     
-    let whiteNoteName = ["laReallyLow", "siReallyLow", "doLow", "reLow", "miLow", "faLow", "solLow", "laLow", "siLow", "do", "re", "mi", "fa", "sol", "la", "si", "doHigh", "reHigh", "miHigh" ] 
-    //    let blackNoteName = ["doSharp", "reSharp", "miSharp", "faSharp", "solSharp", "laSharp", "siSharp"]
+    let whiteNotes = ["laReallyLow", "siReallyLow","reHigh", "miHigh" ] 
+    let blackNotes = ["do", "re", "gap", "fa", "sol", "la", "gap"]
     
     @State var player: AVAudioPlayer?
     
@@ -39,34 +39,40 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Spacer ()
-            ZStack{
-                HStack(spacing: -7) {
-                    ForEach(whiteNoteName, id: \.self) {note in
+            ZStack(alignment: .top){
+                HStack (spacing: -10) {
+                    ForEach(whiteNotes, id: \.self) {note in
                         Button(action: {
-                            playSound(noteName: note)
+                            playSound (noteName: note)
                         }) {
                             Image("whiteKey")
                                 .resizable()
-                                .frame(width:50, height:250)
+                                .frame(width:66, height:380)
                         }
                     }
                 }
-                .simultaneousGesture(LongPressGesture(minimumDuration: 0.1).onEnded({ _ in 
-                    self.isClicked = true
-                }))
-                //            HStack(spacing: -7) {
-                //                ForEach(blackNoteName, id: \.self) {sharpNote in
-                //                    Button(action: {
-                //                        playSound(blackNoteName: sharpNote)
-                //                    }) {
-                //                        Image("blackKey")
-                //                            .resizable()
-                //                            .frame(width:50, height:250)
-                //                    }
-                //                }
-                //            }
-                
+                .ignoresSafeArea()
+                HStack(spacing: UIScreen.main.bounds.width/64){
+                    ForEach(blackNotes, id: \.self) {note in
+//                        if  blackNotes = "gap" {
+//                            Spacer()
+//                        } else{
+                            Button(action: {
+                                playSound(noteName: note)
+                            }) {
+                                Image("blackKey")
+                                    .resizable()
+                                    .frame(width:38, height:203)
+//                            }
+                        }
+                    }
+                }
             }
+            
         }
     }
 }
+
+//                .simultaneousGesture(LongPressGesture(minimumDuration: 0.1).onEnded({ _ in 
+//                    self.isClicked = true
+//                }))

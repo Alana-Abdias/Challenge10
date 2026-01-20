@@ -2,23 +2,29 @@ import SwiftUI
 
 struct lessonFirstScreen: View {
     var body: some View{
-        ZStack{
+        ZStack(alignment: .top){
             Image("textBalloon1")
             Text ("Hello there! Do you want to learn a fun fact? If you are struggling with knowing the difference between a major and a minor scale, there's a trick to learn how!")
                 .frame(width: 497, height: 100)
+                .padding(.top, 28)
                 .foregroundStyle(.black)
+                .lineSpacing(6)
+                .tracking(1.0)
 
         }
-        .frame(alignment: .topLeading)
     }
 }
 struct lessonSecondScreen: View {
     var body: some View{
-        ZStack{
+        ZStack(alignment: .top){
 //            Image("textBalloon2")
             Text ("Major Scales follow the pattern of tone, tone, semitone, tone, tone, tone, semitone.")
                 .frame(width: 497, height: 100)
+                .padding(.top, 24)
                 .foregroundStyle(.black)
+                .lineSpacing(6)
+
+
         }
         .frame(alignment: .topLeading)
         .foregroundStyle(.black)
@@ -28,11 +34,14 @@ struct lessonSecondScreen: View {
 
 struct lessonThirdScreen: View {
         var body: some View {
-            ZStack{
+            ZStack(alignment: .top){
 //            Image("textBalloon2")
             Text ("Minor Scales follow the pattern of tone, semitone, tone, tone, semitone, tone, tone")
                     .frame(width: 497, height: 100)
+                    .padding(.top, 24)
                     .foregroundStyle(.black)
+                    .lineSpacing(6)
+
 
 
         }
@@ -58,7 +67,7 @@ struct LessonView: View {
                     case .pressedNextTwice:
                         lessonThirdScreen()
                     case .pressedSkip:
-                        ContentView()
+                        PianoKeys()
                     }    
             HStack{
                 Image(systemName:"chevron.backward")
