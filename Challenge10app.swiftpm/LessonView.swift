@@ -63,10 +63,12 @@ struct LessonView: View {
     
     var body: some View {
         NavigationStack{
+            Spacer()
             ZStack{
                 Rectangle()
                     .scaledToFill()
                 VStack{
+                    Spacer()
                     Spacer()
                     switch LessonState {
                     case .seesLesson:
@@ -95,7 +97,7 @@ struct LessonView: View {
                                 .foregroundStyle(Color(purple))
                                 .padding()
                         } .navigationDestination(isPresented: $clickedOnNext){
-                            ExerciseView()
+                            OnBoardingView()
                         }
                     }
                     .edgesIgnoringSafeArea(.all)
@@ -106,17 +108,18 @@ struct LessonView: View {
                         clickedOnSkip.toggle()
                     }) {
                         ZStack {
-                            greyButton()
+                            Image("ButtonGrey")
+                                .padding(.bottom, 150)
                             Text("Skip")
-                                .padding(.bottom,120)
+                                .padding(.bottom, 150)
                                 .foregroundStyle(.black)
                             
                         }
                     }
                     .navigationDestination(isPresented: $clickedOnSkip){
-                        onBoardingView()
+                        OnBoardingView()
                     }
-                    
+                   Spacer() 
                 }
             }
         }

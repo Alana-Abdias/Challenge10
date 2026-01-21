@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct onBoardingView: View {
+struct OnBoardingView: View {
     @State var clickedOnGotIt: Bool = false
     
     var body: some View{
@@ -10,6 +10,7 @@ struct onBoardingView: View {
                     .frame(width: .infinity, height:.infinity)
                     .padding()
                 VStack{
+                    Spacer()
                     Text("Press and hold")
                         .font(.title3)
                         .foregroundStyle(Color(.black))
@@ -26,8 +27,8 @@ struct onBoardingView: View {
                             .frame(width:80, height:72, alignment: .bottomTrailing)
                             .padding(.leading, 100)
                         Text("C")
-                            .frame(width: 132, height: 100, alignment: .center)
-                            .padding(.leading, 96)
+                            .frame(width: 62, height: 50, alignment: .top)
+                            .padding(.leading, 100)
                             .foregroundStyle(.black)
                     }
                     
@@ -46,9 +47,10 @@ struct onBoardingView: View {
                         clickedOnGotIt.toggle()
                     }) {
                         ZStack {
-                            purpleButton()
+                            Image("ButtonPurple")
+                                .padding(.bottom,80)
                             Text("Got it!")
-                                .padding(.bottom,32)
+                                .padding(.bottom,80)
                                 .foregroundStyle(.black)
                             
                         }

@@ -74,6 +74,4 @@ struct ContentView: View {
     }
 }
 
-//                .simultaneousGesture(LongPressGesture(minimumDuration: 0.1).onEnded({ _ in 
-//                    self.isClicked = true
-//                }))
+               
