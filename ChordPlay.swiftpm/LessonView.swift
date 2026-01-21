@@ -10,49 +10,49 @@ struct lessonFirstScreen: View {
                 .foregroundStyle(.black)
                 .lineSpacing(6)
                 .tracking(1.0)
-
+            
         }
     }
 }
 struct lessonSecondScreen: View {
     var body: some View{
         ZStack(alignment: .top){
-//            Image("textBalloon2")
+            //            Image("textBalloon2")
             Text ("Major Scales follow the pattern of tone, tone, semitone, tone, tone, tone, semitone.")
                 .frame(width: 497, height: 100)
                 .padding(.top, 24)
                 .foregroundStyle(.black)
                 .lineSpacing(6)
-
-
+            
+            
         }
         .frame(alignment: .topLeading)
         .foregroundStyle(.black)
-
+        
     }
 }
 
 struct lessonThirdScreen: View {
-        var body: some View {
-            ZStack(alignment: .top){
-//            Image("textBalloon2")
+    var body: some View {
+        ZStack(alignment: .top){
+            //            Image("textBalloon2")
             Text ("Minor Scales follow the pattern of tone, semitone, tone, tone, semitone, tone, tone")
-                    .frame(width: 497, height: 100)
-                    .padding(.top, 24)
-                    .foregroundStyle(.black)
-                    .lineSpacing(6)
-
-
-
+                .frame(width: 497, height: 100)
+                .padding(.top, 24)
+                .foregroundStyle(.black)
+                .lineSpacing(6)
+            
+            
+            
         }
-            .frame(alignment: .topLeading)
+        .frame(alignment: .topLeading)
     }
 }
 
 
 struct LessonView: View {
     var purple: Color = Color (red:0.2884, green:0.2553, blue: 0.4563)
-
+    
     enum lessonState {
         case seesLesson, pressedNextOnce, pressedNextTwice
     }
@@ -60,13 +60,14 @@ struct LessonView: View {
     
     @State var clickedOnSkip: Bool = false
     @State var clickedOnNext: Bool = false
-
+    
     var body: some View {
         NavigationStack{
             ZStack{
                 Rectangle()
                     .scaledToFill()
                 VStack{
+                    Spacer()
                     switch LessonState {
                     case .seesLesson:
                         lessonFirstScreen()
@@ -93,30 +94,29 @@ struct LessonView: View {
                                 .frame(width: 32, height: 47, alignment: .trailing)
                                 .foregroundStyle(Color(purple))
                                 .padding()
+                        } .navigationDestination(isPresented: $clickedOnNext){
+                            ExerciseView()
                         }
                     }
                     .edgesIgnoringSafeArea(.all)
-//                    .onTapGesture(perform: {
-//                        .navigationDestination(isPresented: $clickedOnNext){
-//                            ExerciseView()
-//                        }
-//                    })
-//                    
+                    
+                    Spacer()
+                    
                     Button(action: {
                         clickedOnSkip.toggle()
                     }) {
                         ZStack {
                             greyButton()
                             Text("Skip")
-                                .padding(.top, 160)
+                                .padding(.bottom,120)
                                 .foregroundStyle(.black)
                             
                         }
                     }
                     .navigationDestination(isPresented: $clickedOnSkip){
-                        ExerciseView()
-                }
-                
+                        onBoardingView()
+                    }
+                    
                 }
             }
         }
@@ -128,7 +128,7 @@ struct greyButton: View {
         Image("ButtonGrey")          
             .resizable()            
             .frame(width:400, height:40)
-            .padding(.top, 160)
+            .padding(.bottom, 120)
     }
 }
 
@@ -137,6 +137,6 @@ struct purpleButton: View {
         Image("ButtonPurple")          
             .resizable()            
             .frame(width:400, height:40) 
-            .padding(.top, 160)
+            .padding(.bottom, 32)
     }
 }

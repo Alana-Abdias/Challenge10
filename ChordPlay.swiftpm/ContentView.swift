@@ -15,6 +15,7 @@ import AVFoundation
 
 
 struct ContentView: View {
+    
     @State var isClicked = false 
     
     let whiteNotes = ["laReallyLow", "siReallyLow","reHigh", "miHigh" ] 
@@ -54,16 +55,16 @@ struct ContentView: View {
                 .ignoresSafeArea()
                 HStack(spacing: UIScreen.main.bounds.width/64){
                     ForEach(blackNotes, id: \.self) {note in
-//                        if  blackNotes = "gap" {
-//                            Spacer()
-//                        } else{
-                            Button(action: {
-                                playSound(noteName: note)
-                            }) {
-                                Image("blackKey")
-                                    .resizable()
-                                    .frame(width:38, height:203)
-//                            }
+                        //                        if  blackNotes = "gap" {
+                        //                            Spacer()
+                        //                        } else{
+                        Button(action: {
+                            playSound(noteName: note)
+                        }) {
+                            Image("blackKey")
+                                .resizable()
+                                .frame(width:38, height:203)
+                            //                            }
                         }
                     }
                 }

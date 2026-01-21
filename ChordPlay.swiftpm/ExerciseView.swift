@@ -54,6 +54,25 @@ struct ExerciseView: View {
     var body: some View {
         VStack{
             Spacer()
+            ZStack(alignment: .top){
+                Image ("textBalloon3")
+                    .resizable()
+                    .frame(width:195, height:147, alignment: .trailing)
+                    .padding(.leading, 100)
+                Text("C7M")
+                    .frame(width: 132, height: 100)
+                    .padding(.leading, 96)
+                    .foregroundStyle(.black)
+            }
+            
+                Image ("bird")
+                    .resizable()
+                    .frame(width:113, height:172, alignment: .trailing)
+                    .padding(.trailing, 100)
+                
+               
+            
+            Spacer()
             HStack (spacing: -10) {
                 Spacer()
                 ZStack(alignment: .top){
